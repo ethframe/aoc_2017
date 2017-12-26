@@ -12,9 +12,15 @@ def div(a, b):
         # a -= d
         while d:
             a, d = a ^ d, ((~a) & d) << 1
-        q += v
+        # q += v
+        while v:
+            q, v = q ^ v, (q & v) << 1
     if a == b:
-        return q + 1, 0
+        # q += 1
+        e = 1
+        while e:
+            q, e = q ^ e, (q & e) << 1
+        return q, 0
     return q, a
 
 
